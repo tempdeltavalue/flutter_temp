@@ -26,7 +26,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            QrImageView(data: qrText),
+            QrImageView(data: qrText, embeddedImage: AssetImage("assets/holy_coffee_logo.png"),),
             SizedBox(height: 20),
             buildCommentRows(),
           ],
