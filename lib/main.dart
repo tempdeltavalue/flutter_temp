@@ -15,13 +15,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Color.fromARGB(255, 250, 228, 227), // Set the background color to pink
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  String qr_text = 'https://www.instagram.com/holycoffee_mlyniv/';
+
+  //const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +40,9 @@ class MyHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(children: [
           TextField(
-            onChanged: (val) { },
+            onChanged: (val) => setState(()=> qr_text = val),
             decoration: InputDecoration(labelText: 'Type your data'),),
-          QrImageView(data: 'https://www.instagram.com/holycoffee_mlyniv/')
+          QrImageView(data: qr_text, embeddedImage: AssetImage('assets/holy_coffee_logo.png'),)
     ],
       ),
     )
